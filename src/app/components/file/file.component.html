@@ -1,0 +1,31 @@
+  <div *ngIf="(af.authState | async)" class="container">
+      <a [routerLink]="['/files']">Go Back</a>
+      <br>
+      <h2 class="page-header">{{ file.title }}</h2>
+      <div class="row">
+        <div *ngIf="file.type === 'Photo'; else typeTemplate" class="col-md-4">
+          <img style="width:100%" class="thumbnail" src="{{fileUrl}}">
+        </div>
+        <ng-template class="row" #typeTemplate>
+              <div class="col-md-4">
+                <video *ngIf="fileUrl" width="100%" autoplay>
+                  <source [src]="fileUrl" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>
+        </ng-template>
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item">
+              Description: {{ file.description }}
+            </li>
+            <li class="list-group-item">
+              Type of media: {{ file.type }}
+            </li>
+          </ul>
+        </div>
+        <a [routerLink]="['/edit-file/' + file.$key]" class="btn btn-default">Edit</a>
+        <a (click)="onDelete()" class="btn btn-danger">Delete</a>
+      </div>
+</div>
+  

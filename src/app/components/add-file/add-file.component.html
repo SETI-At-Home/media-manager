@@ -1,0 +1,27 @@
+<div *ngIf="(af.authState | async)" class="row">
+  <a [routerLink]="['/files']">Back</a>
+  <br>
+  <h2 class="page-header">Add File</h2>
+  <form (submit)="onSubmit()">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" [(ngModel)]="title" name="title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" [(ngModel)]="description" name="description" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <select [(ngModel)]="type" name="type" class="form-control" type="text" >
+        <option value="Photo">Photo</option>
+        <option value="Video">Video</option>
+        <option value="Audio">Audio</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <input type="file" id="fileInput" [(ngModel)]="fileInput" name="fileInput">
+      </div>
+    <input type="submit" value="submit" class="btn btn-success">
+  </form>
+</div>

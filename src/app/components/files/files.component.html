@@ -1,0 +1,14 @@
+<div *ngIf="(af.authState | async)" class="row">
+  <div class="col-xs-12">
+      <form class="well">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search files..." [(ngModel)]="search" name="search" (keyup)="searchFiles()">	
+        </div>						
+      </form>	
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let file of files">
+        <a [routerLink]="['/file/'+ file.$key]"><strong>{{ file.title }}</strong> {{ file.type }}</a> 
+      </li>
+    </ul>
+  </div>
+</div>
