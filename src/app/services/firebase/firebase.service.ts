@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import 'rxjs/Rx';
+import { FileInterface } from '../../model/file.interface';
 
 @Injectable()
 export class FirebaseService {
@@ -49,7 +50,6 @@ export class FirebaseService {
     this.files.update(id, file);
   }
 
-
   deleteFile(id, fileStorage) {
     this.files.remove(id);
     firebase.storage()
@@ -58,12 +58,3 @@ export class FirebaseService {
   }
 }
 
-
-
-interface FileInterface {
-  $key?: string;
-  title?: string;
-  type?: string;
-  fileName?: string;
-  description?: string;
-}
